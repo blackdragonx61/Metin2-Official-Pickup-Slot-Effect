@@ -1,0 +1,1 @@
+#define __BL_ENABLE_PICKUP_ITEM_EFFECT__
