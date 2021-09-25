@@ -96,7 +96,6 @@ void CSlotWindow::ActivateNewSlot(const DWORD dwSlotIndex)
 					snprintf(buf, sizeof(buf), "d:/ymir work/ui/public/slotactiveeffect/slot%d/%02d.sub", (i + 1), j);
 
 				NewSlotEffect->AppendImage(buf);
-				NewSlotEffect->SetDelay(3);
 				NewSlotEffect->SetRenderingMode(CGraphicExpandedImageInstance::RENDERING_MODE_SCREEN);
 			}
 		}
@@ -175,6 +174,19 @@ void CSlotWindow::SetNewSlotFlashEffect(const DWORD dwSlotIndex, const bool bAct
 			rSlot.pInstance->Render();
 		}
 		
+//Find
+		if (rSlot.bActive)
+		{
+			int ix = m_rect.left + rSlot.ixPosition;
+			int iy = m_rect.top + rSlot.iyPosition;
+			if (m_pSlotActiveEffect)
+			{
+				m_pSlotActiveEffect->SetPosition(ix, iy);
+				m_pSlotActiveEffect->Render();
+			}
+		}
+
+///Add
 #if defined(__BL_ENABLE_PICKUP_ITEM_EFFECT__)
 		for (const auto& NewSlotEffect : rSlot.pNewSlotEffect)
 		{
