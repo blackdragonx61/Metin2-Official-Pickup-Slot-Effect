@@ -14,8 +14,8 @@ if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
 		self.wndItem.RefreshSlot()
 
 #Add Above
-			if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
-				self.__HighlightSlot_Refresh()
+		if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
+			self.__HighlightSlot_Refresh()
 
 #Find in def OverInItem(self, overSlotPos):
 		overSlotPos = self.__InventoryLocalSlotPosToGlobalSlotPos(overSlotPos)
@@ -49,6 +49,8 @@ if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
 					self.wndItem.ActivateSlot(i)
 					# self.wndItem.SetSlotDiffuseColor(i, wndMgr.COLOR_TYPE_YELLOW)
 					# self.wndItem.SetSlotFlashEffect(i, True)
+				else:
+					self.wndItem.DeactivateSlot(i)
 
 		def __HighlightSlot_Clear(self):
 			for i in xrange(self.wndItem.GetSlotCount()):
