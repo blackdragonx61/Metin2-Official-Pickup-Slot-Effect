@@ -29,8 +29,8 @@ PyObject* wndMgrSetSlotDiffuseColor(PyObject* poSelf, PyObject* poArgs)
 	if (!PyTuple_GetWindow(poArgs, 0, &pWin))
 		return Py_BuildException();
 
-	DWORD dwSlotIndex;
-	if (!PyTuple_GetUnsignedLong(poArgs, 1, &dwSlotIndex))
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
 		return Py_BuildException();
 
 	BYTE blType;
@@ -40,7 +40,7 @@ PyObject* wndMgrSetSlotDiffuseColor(PyObject* poSelf, PyObject* poArgs)
 	if (!pWin->IsType(UI::CSlotWindow::Type()))
 		return Py_BuildException();
 
-	dynamic_cast<UI::CSlotWindow*>(pWin)->SetNewSlotDiffuseColor(dwSlotIndex, blType);
+	dynamic_cast<UI::CSlotWindow*>(pWin)->SetNewSlotDiffuseColor(iSlotIndex, blType);
 
 	return Py_BuildNone();
 }
@@ -51,8 +51,8 @@ PyObject* wndMgrSetSlotFlashEffect(PyObject* poSelf, PyObject* poArgs)
 	if (!PyTuple_GetWindow(poArgs, 0, &pWin))
 		return Py_BuildException();
 
-	DWORD dwSlotIndex;
-	if (!PyTuple_GetUnsignedLong(poArgs, 1, &dwSlotIndex))
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
 		return Py_BuildException();
 
 	bool bActive;
@@ -62,7 +62,7 @@ PyObject* wndMgrSetSlotFlashEffect(PyObject* poSelf, PyObject* poArgs)
 	if (!pWin->IsType(UI::CSlotWindow::Type()))
 		return Py_BuildException();
 
-	dynamic_cast<UI::CSlotWindow*>(pWin)->SetNewSlotFlashEffect(dwSlotIndex, bActive);
+	dynamic_cast<UI::CSlotWindow*>(pWin)->SetNewSlotFlashEffect(iSlotIndex, bActive);
 
 	return Py_BuildNone();
 }
