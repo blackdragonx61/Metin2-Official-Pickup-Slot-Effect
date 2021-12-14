@@ -11,6 +11,14 @@ if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
 				self.listHighlightedSlot = []
 
 #Find in def RefreshBagSlotWindow(self):
+		setItemVNum = self.wndItem.SetItemSlot
+
+#Add
+		if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
+			for i in xrange(self.wndItem.GetSlotCount()):
+				self.wndItem.DeactivateSlot(i)
+
+#Find in def RefreshBagSlotWindow(self):
 		self.wndItem.RefreshSlot()
 
 #Add Above
@@ -49,8 +57,6 @@ if app.BL_ENABLE_PICKUP_ITEM_EFFECT:
 					self.wndItem.ActivateSlot(i)
 					# self.wndItem.SetSlotDiffuseColor(i, wndMgr.COLOR_TYPE_YELLOW)
 					# self.wndItem.SetSlotFlashEffect(i, True)
-				else:
-					self.wndItem.DeactivateSlot(i)
 
 		def __HighlightSlot_Clear(self):
 			for i in xrange(self.wndItem.GetSlotCount()):
